@@ -53,10 +53,10 @@ def read():
             textComp = text
             
             if text + ".html" in web_list:
-                driver.get("file:///home/pi/pi-rfid/web/webbsidor/" + text + ".html")
+                driver.get("file:///home/pi/pi-rfid/web/" + text + ".html")
             
             else:
-                driver.get("file:///home/pi/pi-rfid/web/webbsidor/index.html")
+                driver.get("file:///home/pi/pi-rfid/web/index.html")
             
             #print(text)
             time.sleep(0.5)
