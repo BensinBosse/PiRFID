@@ -24,11 +24,11 @@ chrome_options.add_argument("disable-setuid-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
 driver = webdriver.Chrome(chrome_options=chrome_options)
-driver.get("file:///home/pi/pi-rfid/web/webbsidor/index.html")
+driver.get("file:///home/pi/pi-rfid/web/index.html")
 
 
 textComp = 0
-web_list = os.listdir("/home/pi/pi-rfid/web/webbsidor")
+web_list = os.listdir("/home/pi/pi-rfid/web")
 
 
 
@@ -45,35 +45,34 @@ def read():
         except ValueError:
             time.sleep(2)
             return
-            
+
         text = str(int(text))
         print(text)
-        
+
         if text != textComp:
             textComp = text
-            
+
             if text + ".html" in web_list:
                 driver.get("file:///home/pi/pi-rfid/web/" + text + ".html")
-            
+
             else:
                 driver.get("file:///home/pi/pi-rfid/web/index.html")
-            
+
             #print(text)
             time.sleep(0.5)
 
         else:
             pass
             time.sleep(1)
-        
+
 
 
     except KeyboardInterrupt:
         GPIO.cleanup
         raise
-    
+
 time.sleep(4)
 
 while True:
     read()
-
 
